@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pluginApps>
+  <pluginApp applicationType="VehicleInformation" applicationWeight="216" text="Commande xDrive (experimental)">
+    <entryButton id="1" action="10">
+      <properties>
+        <property id="23" value="2" />
+      </properties>
+    </entryButton>
+    <actions>
+      <hmiAction id="10" target="100" />
+      <hmiAction id="11" target="101" />
+      <hmiAction id="12" target="102" />
+      <raAction id="21" />
+      <raAction id="22" />
+      <raAction id="23" />
+    </actions>
+    <models>
+      <raDataModel id="50" modelType="Richtext" />
+    </models>
+    <hmiStates>
+      <hmiState id="100" text="Commande xDrive (experimental)">
+        <components>
+          <button id="200" text="Lire le mode de la boite de transfert" action="21" />
+          <button id="201" text="Demander le mode propulsion" action="11" />
+          <button id="202" text="Retablir le mode xDrive" action="12" />
+          <label id="203" model="50" />
+        </components>
+      </hmiState>
+      <hmiState id="101" parentId="100" text="Confirmer le mode propulsion">
+        <components>
+          <label id="204" text="Vehicule immobile" />
+          <label id="210" text="Boite en P; frein de parking serre" />
+          <label id="211" text="DSC_25 (0F1860): moteur tournant" />
+          <button id="205" action="22" text="Confirmer le mode propulsion" />
+          <label id="206" model="50" />
+        </components>
+      </hmiState>
+      <hmiState id="102" parentId="100" text="Confirmer le mode xDrive">
+        <components>
+          <label id="207" text="Vehicule immobile" />
+          <label id="212" text="Boite en P; frein de parking serre" />
+          <label id="213" text="DSC_25 (0F1860): moteur tournant" />
+          <button id="208" action="23" text="Confirmer le mode xDrive" />
+          <label id="209" model="50" />
+        </components>
+      </hmiState>
+    </hmiStates>
+  </pluginApp>
+</pluginApps>
