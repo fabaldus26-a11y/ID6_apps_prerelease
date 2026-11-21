@@ -19,6 +19,6 @@ Set-ExecutionPolicy -Scope Process Bypass
 .\Install-XDriveControl-Readable-Fr.ps1
 ```
 
-Le script vérifie le XML local, utilise l'empreinte SSH déjà validée, crée une sauvegarde distante horodatée, transfère le XML par SCP vers un nom temporaire, remplace le XML actif et vérifie deux libellés avant de confirmer. Il ne touche ni au worker `xdrive-control-qnx`, ni à `libXDriveControl.so`, ni aux commandes/actions du menu. Le mot de passe est demandé à l'exécution et le fichier temporaire local est supprimé à la fin.
+Le script vérifie le XML local, utilise l'empreinte SSH déjà validée, crée une sauvegarde distante horodatée, envoie le XML par l'entrée standard de Plink vers un nom temporaire, remplace le XML actif et vérifie deux libellés avant de confirmer. Il ne touche ni au worker `xdrive-control-qnx`, ni à `libXDriveControl.so`, ni aux commandes/actions du menu. Le mot de passe est demandé à l'exécution et le fichier temporaire local est supprimé à la fin.
 
 Redémarrer l'iDrive à l'arrêt pour recharger le XML. La compatibilité des commandes xDrive et l'affichage réel sur le véhicule n'ont pas été validés par ce correctif d'interface. Ne pas utiliser une commande de mode tant que la variante DSC/LMV n'est pas explicitement prise en charge.
