@@ -7,7 +7,6 @@ param(
 $ErrorActionPreference = 'Stop'
 $remoteFile = '/var/opt/hmi/data/ID5/Plugins/XDriveControl/XDriveControl.xml'
 $plink = 'C:\Program Files\PuTTY\plink.exe'
-$pscp = 'C:\Program Files\PuTTY\pscp.exe'
 $xmlFile = Join-Path $PSScriptRoot 'XDriveControl.xml'
 $runId = [Guid]::NewGuid().ToString('N')
 $remoteStage = "/var/opt/hmi/data/ID5/Plugins/XDriveControl/.XDriveControl.xml.$runId.stage"
@@ -17,8 +16,36 @@ $uploaded = $false
 $backupCreated = $false
 
 if (-not (Test-Path -LiteralPath $plink -PathType Leaf)) { throw "PuTTY plink introuvable : $plink" }
-if (-not (Test-Path -LiteralPath $pscp -PathType Leaf)) { throw "PuTTY pscp introuvable : $pscp" }
 if (-not (Test-Path -LiteralPath $xmlFile -PathType Leaf)) { throw "XML manquant : $xmlFile" }
+
+function Quote-WindowsArgument([string]$Value) {
+    '"' + $Value.Replace('"', '\"') + '"'
+}
+
+function Invoke-Plink([string]$RemoteCommand, [byte[]]$InputBytes = $null) {
+    $arguments = @('-batch','-T','-ssh','-2','-P','22','-l','root','-hostkey',$HostKey,'-noagent','-a','-x','-pwfile',$passwordFile,$NbtIp,$RemoteCommand)
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = $plink
+    $psi.Arguments = (($arguments | ForEach-Object { Quote-WindowsArgument ([string]$_) }) -join ' ')
+    $psi.UseShellExecute = $false
+    $psi.CreateNoWindow = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    if ($null -ne $InputBytes) { $psi.RedirectStandardInput = $true }
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo = $psi
+    if (-not $process.Start()) { throw 'Impossible de démarrer PuTTY Plink.' }
+    if ($null -ne $InputBytes) {
+        $process.StandardInput.BaseStream.Write($InputBytes, 0, $InputBytes.Length)
+        $process.StandardInput.BaseStream.Flush()
+        $process.StandardInput.Close()
+    }
+    $stdout = $process.StandardOutput.ReadToEnd()
+    $stderr = $process.StandardError.ReadToEnd()
+    $process.WaitForExit()
+    if ($stdout) { Write-Host $stdout.TrimEnd() }
+    if ($process.ExitCode -ne 0) { throw "Plink a échoué ($($process.ExitCode)): $stderr" }
+}
 
 try {
     [xml]$xml = Get-Content -LiteralPath $xmlFile -Raw -Encoding UTF8
@@ -39,21 +66,19 @@ try {
         $plain = $null
     }
 
-    $sshPrefix = @('-batch','-T','-ssh','-2','-P','22','-l','root','-hostkey',$HostKey,'-noagent','-a','-x','-pwfile',$passwordFile,$NbtIp)
-    & $plink @sshPrefix "test -s '$remoteFile'"
-    if ($LASTEXITCODE -ne 0) { throw "Connexion ou XML actif indisponible sur $NbtIp; aucune modification effectuée." }
+    Invoke-Plink "test -s '$remoteFile'"
 
-    & $plink @sshPrefix "cp -p '$remoteFile' '$remoteBackup'"
-    if ($LASTEXITCODE -ne 0) { throw 'Sauvegarde distante impossible; aucune modification effectuée.' }
+    Invoke-Plink "cp -p '$remoteFile' '$remoteBackup'"
     $backupCreated = $true
 
-    & $pscp -batch -scp -P 22 -l root -hostkey $HostKey -pwfile $passwordFile $xmlFile "${NbtIp}:$remoteStage"
-    if ($LASTEXITCODE -ne 0) { throw 'Transfert du XML temporaire échoué. La sauvegarde distante est conservée.' }
+    $xmlBytes = [System.IO.File]::ReadAllBytes($xmlFile)
+    Invoke-Plink "cat > '$remoteStage'" $xmlBytes
     $uploaded = $true
 
-    & $plink @sshPrefix "test -s '$remoteStage' && mv '$remoteStage' '$remoteFile' && grep -q 'DSC_25 (0F1860): moteur tournant' '$remoteFile' && grep -q 'Boite en P; frein de parking serre' '$remoteFile'"
-    if ($LASTEXITCODE -ne 0) {
-        if ($uploaded) { & $plink @sshPrefix "mv '$remoteBackup' '$remoteFile'" | Out-Null }
+    try {
+        Invoke-Plink "test -s '$remoteStage' && mv '$remoteStage' '$remoteFile' && grep -q 'DSC_25 (0F1860): moteur tournant' '$remoteFile' && grep -q 'Boite en P; frein de parking serre' '$remoteFile'"
+    } catch {
+        if ($uploaded) { try { Invoke-Plink "mv '$remoteBackup' '$remoteFile'" } catch { Write-Warning "Restauration automatique échouée. Sauvegarde disponible ici : $remoteBackup" } }
         throw 'Vérification après copie échouée. Restauration de la sauvegarde demandée.'
     }
 
