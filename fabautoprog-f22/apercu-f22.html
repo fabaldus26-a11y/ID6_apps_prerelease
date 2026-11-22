@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabAutoProg F22 — Aperçu iDrive</title>
+<style>
+:root{color-scheme:dark;--text:#eaf1f8;--muted:#a7b7c8;--line:#324455;--blue:#68d7ff;--amber:#ffad74}
+*{box-sizing:border-box}body{margin:0;background:#0c1015;color:var(--text);font:16px system-ui,sans-serif}
+main{max-width:58rem;margin:auto;padding:clamp(1rem,4vw,2.5rem)}h1{font-size:1.8rem;margin:.35em 0}h2{margin:0;font-size:1.3rem}p{color:var(--muted);line-height:1.5}
+header,.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}.tag{color:var(--blue);font-weight:700}
+section{margin-top:1.25rem;background:#141e28;border:1px solid var(--line);border-radius:1rem;padding:1rem}
+.grip{display:grid;grid-template-columns:minmax(12rem,1fr) 1.55fr;align-items:center;gap:1rem;margin-top:1rem}
+canvas{display:block;width:100%;height:auto;background:#0d151e;border-radius:.8rem}
+dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin:0}dl div{border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:.5rem;padding:.6rem;background:#101820}
+dt{font-size:.78rem;color:var(--muted)}dd{margin:.23em 0 0;font-size:1.25rem;font-variant-numeric:tabular-nums}
+button{font:inherit;color:var(--text);border:1px solid var(--line);border-radius:.55rem;padding:.55rem .7rem;background:#1c2a37;cursor:pointer}button[aria-pressed=true]{border-color:var(--blue);background:#143444}
+button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.modes{display:flex;gap:.5rem;flex-wrap:wrap}
+#mode{color:var(--amber)}@media(max-width:38rem){.grip{grid-template-columns:1fr}canvas{max-width:22rem;margin:auto}}
+</style>
+<main>
+<header><h1>FabAutoProg F22</h1><span class="tag">Aperçu hors voiture</span></header>
+<section aria-labelledby="grip-title">
+ <div class="toolbar"><h2 id="grip-title">M Grip Meter</h2><div class="modes" aria-label="Source de l’aperçu">
+ <button type="button" id="empty" aria-pressed="true">Sans données</button>
+ <button type="button" id="demo" aria-pressed="false">Démonstration</button></div></div>
+ <div class="grip">
+  <canvas width="360" height="360" id="plot" role="img" aria-label="Graphique des accélérations en g"></canvas>
+  <dl aria-live="polite">
+   <div><dt>Accélération latérale</dt><dd data-unit="g">—</dd></div>
+   <div><dt>Accélération longitudinale</dt><dd data-unit="g">—</dd></div>
+   <div><dt>Accélération combinée</dt><dd data-unit="g">—</dd></div>
+   <div><dt>Pression de freinage</dt><dd data-unit="bar">—</dd></div>
+   <div><dt>Angle de dérive</dt><dd data-unit="°">—</dd></div>
+   <div><dt>Vitesse de lacet</dt><dd data-unit="°/s">—</dd></div>
+   <div><dt>Patinage arrière</dt><dd data-unit="%">—</dd></div>
+  </dl>
+ </div>
+ <p id="source" role="status">Télémétrie indisponible.</p>
+</section>
+<section aria-labelledby="flap-title">
+ <h2 id="flap-title">Clapet d’échappement</h2>
+ <p>Mode sélectionné dans la maquette · <strong id="mode" role="status">Automatique</strong></p>
+ <div class="modes" id="flaps" aria-label="Modes de démonstration">
+  <button type="button" aria-pressed="true">Automatique</button>
+  <button type="button" aria-pressed="false">Ouvert</button>
+  <button type="button" aria-pressed="false">Fermé</button>
+ </div>
+</section>
+</main>
+<script>
+const plot = document.querySelector('#plot')
+const ctx = plot.getContext('2d')
+const number = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 })
+const sample = { lateral: 0.32, longitudinal: -0.45, brake: 31, drift: 1, yaw: 2, slip: 1 }
+
+function render(sampleData) {
+  const { width, height } = plot
+  ctx.clearRect(0, 0, width, height)
+  ctx.save()
+  ctx.translate(width / 2, height / 2)
+  ctx.strokeStyle = '#365268'
+  for (const radius of [44, 88, 132]) {
+    ctx.beginPath()
+    ctx.arc(0, 0, radius, 0, 2 * Math.PI)
+    ctx.stroke()
+  }
+  ctx.beginPath()
+  ctx.moveTo(-132, 0); ctx.lineTo(132, 0)
+  ctx.moveTo(0, -132); ctx.lineTo(0, 132)
+  ctx.stroke()
+  ctx.fillStyle = '#a7b7c8'
+  ctx.font = '14px system-ui'
+  ctx.textAlign = 'center'
+  ctx.fillText('ACCÉLÉRATION', 0, -146)
+  ctx.fillText('FREINAGE', 0, 159)
+  ctx.fillText('G', -150, 5)
+  ctx.fillText('D', 150, 5)
+  const values = sampleData ? [
+    sampleData.lateral, sampleData.longitudinal, Math.hypot(sampleData.lateral, sampleData.longitudinal),
+    sampleData.brake, sampleData.drift, sampleData.yaw, sampleData.slip
+  ] : []
+  if (sampleData) {
+    const x = sampleData.lateral * 88
+    const y = -sampleData.longitudinal * 88
+    ctx.strokeStyle = '#68d7ff'
+    ctx.lineWidth = 4
+    ctx.beginPath()
+    ctx.moveTo(0, 0); ctx.lineTo(x, y)
+    ctx.stroke()
+    ctx.fillStyle = '#eaf1f8'
+    ctx.beginPath()
+    ctx.arc(x, y, 6, 0, 2 * Math.PI)
+    ctx.fill()
+  }
+  ctx.restore()
+  document.querySelectorAll('dd').forEach((node, index) => {
+    node.textContent = sampleData ? `${number.format(values[index])} ${node.dataset.unit}` : '—'
+  })
+  document.querySelector('#source').textContent = sampleData ? 'Valeurs simulées.' : 'Télémétrie indisponible.'
+  document.querySelector('#demo').setAttribute('aria-pressed', Boolean(sampleData))
+  document.querySelector('#empty').setAttribute('aria-pressed', !sampleData)
+}
+document.querySelector('#demo').onclick = () => render(sample)
+document.querySelector('#empty').onclick = () => render(null)
+for (const button of document.querySelectorAll('#flaps button')) {
+  button.onclick = () => {
+    for (const mode of document.querySelectorAll('#flaps button')) mode.setAttribute('aria-pressed', mode === button)
+    document.querySelector('#mode').textContent = button.textContent
+  }
+}
+render(null)
+</script>
+</html>

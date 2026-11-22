@@ -1,0 +1,920 @@
+--- a/source/native/manifests/BoostDeck.xml
++++ b/source/native/manifests/BoostDeck.xml
+@@ -684,7 +684,7 @@
+     <hmiStates>
+       <hmiState id="100" text="BoostDeck">
+         <optionComponents>
+-          <button id="33" action="520" text="BoostDeck settings" />
++          <button id="33" action="520" text="Réglages BoostDeck" />
+         </optionComponents>
+         <components>
+           <image id="209" model="69">
+@@ -1041,7 +1041,7 @@
+           </label>
+         </components>
+       </hmiState>
+-      <hmiState id="520" parentId="100" text="BoostDeck settings">
++      <hmiState id="520" parentId="100" text="Réglages BoostDeck">
+         <components>
+           <label id="118" model="118" />
+           <button id="120" action="521" text="" model="120" />
+@@ -1054,41 +1054,41 @@
+           <button id="127" action="528" text="" model="127" />
+           <button id="654" action="104" text="" model="110" />
+           <button id="1051" action="501" text="" model="360" />
+-          <button id="1050" action="500" text="Configure gauges" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="521" parentId="520" text="Pressure">
++          <button id="1050" action="500" text="Configurer les jauges" />
++        </components>
++      </hmiState>
++      <hmiState id="521" parentId="520" text="Pression">
+         <components>
+           <radiobutton id="700" action="2000" model="5000" text="" textModel="700" />
+           <radiobutton id="701" action="2001" model="5001" text="" textModel="701" />
+           <radiobutton id="702" action="2002" model="5002" text="" textModel="702" />
+         </components>
+       </hmiState>
+-      <hmiState id="522" parentId="520" text="Speed">
++      <hmiState id="522" parentId="520" text="Vitesse">
+         <components>
+           <radiobutton id="720" action="2020" model="5020" text="" textModel="720" />
+           <radiobutton id="721" action="2021" model="5021" text="" textModel="721" />
+         </components>
+       </hmiState>
+-      <hmiState id="523" parentId="520" text="Temperature">
++      <hmiState id="523" parentId="520" text="Température">
+         <components>
+           <radiobutton id="740" action="2040" model="5040" text="" textModel="740" />
+           <radiobutton id="741" action="2041" model="5041" text="" textModel="741" />
+         </components>
+       </hmiState>
+-      <hmiState id="524" parentId="520" text="Gauge style">
++      <hmiState id="524" parentId="520" text="Style des jauges">
+         <components>
+           <radiobutton id="760" action="2060" model="5060" text="" textModel="760" />
+           <radiobutton id="761" action="2061" model="5061" text="" textModel="761" />
+         </components>
+       </hmiState>
+-      <hmiState id="525" parentId="520" text="Alert mode">
++      <hmiState id="525" parentId="520" text="Mode d’alerte">
+         <components>
+           <radiobutton id="780" action="2080" model="5080" text="" textModel="780" />
+           <radiobutton id="781" action="2081" model="5081" text="" textModel="781" />
+         </components>
+       </hmiState>
+-      <hmiState id="526" parentId="520" text="Coolant high">
++      <hmiState id="526" parentId="520" text="Liquide trop chaud">
+         <components>
+           <radiobutton id="800" action="2100" model="5100" text="" textModel="800" />
+           <radiobutton id="801" action="2101" model="5101" text="" textModel="801" />
+@@ -1102,7 +1102,7 @@
+           <radiobutton id="809" action="2109" model="5109" text="" textModel="809" />
+         </components>
+       </hmiState>
+-      <hmiState id="527" parentId="520" text="Oil temp high">
++      <hmiState id="527" parentId="520" text="Huile trop chaude">
+         <components>
+           <radiobutton id="820" action="2120" model="5120" text="" textModel="820" />
+           <radiobutton id="821" action="2121" model="5121" text="" textModel="821" />
+@@ -1116,7 +1116,7 @@
+           <radiobutton id="829" action="2129" model="5129" text="" textModel="829" />
+         </components>
+       </hmiState>
+-      <hmiState id="528" parentId="520" text="Oil pressure low">
++      <hmiState id="528" parentId="520" text="Pression huile basse">
+         <components>
+           <radiobutton id="840" action="2140" model="5140" text="" textModel="840" />
+           <radiobutton id="841" action="2141" model="5141" text="" textModel="841" />
+@@ -1126,26 +1126,26 @@
+           <radiobutton id="845" action="2145" model="5145" text="" textModel="845" />
+         </components>
+       </hmiState>
+-      <hmiState id="104" parentId="520" text="Gauge color">
+-        <components>
+-          <radiobutton id="390" action="2200" model="5200" text="BMW Orange" />
+-          <radiobutton id="391" action="2201" model="5201" text="Blue" />
+-          <radiobutton id="392" action="2202" model="5202" text="Green" />
+-          <radiobutton id="393" action="2203" model="5203" text="White" />
+-          <radiobutton id="394" action="2204" model="5204" text="Purple" />
+-          <radiobutton id="395" action="2205" model="5205" text="Pink" />
++      <hmiState id="104" parentId="520" text="Couleur des jauges">
++        <components>
++          <radiobutton id="390" action="2200" model="5200" text="Orange BMW" />
++          <radiobutton id="391" action="2201" model="5201" text="Bleu" />
++          <radiobutton id="392" action="2202" model="5202" text="Vert" />
++          <radiobutton id="393" action="2203" model="5203" text="Blanc" />
++          <radiobutton id="394" action="2204" model="5204" text="Violet" />
++          <radiobutton id="395" action="2205" model="5205" text="Rose" />
+           <radiobutton id="396" action="2206" model="5206" text="Cyan" />
+-          <radiobutton id="397" action="2207" model="5207" text="Red" />
+-          <radiobutton id="398" action="2208" model="5208" text="Multicolor" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="501" parentId="520" text="Engine profile">
+-        <components>
+-          <radiobutton id="591" action="2210" model="5210" text="Gasoline" />
+-          <radiobutton id="592" action="2211" model="5211" text="Diesel (standard OBD PIDs)" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="500" parentId="520" text="Configure gauges">
++          <radiobutton id="397" action="2207" model="5207" text="Rouge" />
++          <radiobutton id="398" action="2208" model="5208" text="Multicolore" />
++        </components>
++      </hmiState>
++      <hmiState id="501" parentId="520" text="Profil moteur">
++        <components>
++          <radiobutton id="591" action="2210" model="5210" text="Essence" />
++          <radiobutton id="592" action="2211" model="5211" text="Diesel (OBD standard)" />
++        </components>
++      </hmiState>
++      <hmiState id="500" parentId="520" text="Configurer les jauges">
+         <components>
+           <button id="540" action="510" text="" model="340" />
+           <button id="541" action="511" text="" model="341" />
+@@ -1158,319 +1158,319 @@
+           <button id="548" action="518" text="" model="348" />
+         </components>
+       </hmiState>
+-      <hmiState id="510" parentId="500" text="Gauge 1">
+-        <components>
+-          <radiobutton id="3500" action="3500" model="5300" text="Boost" />
++      <hmiState id="510" parentId="500" text="Jauge 1">
++        <components>
++          <radiobutton id="3500" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3501" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3502" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3503" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3504" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3505" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3506" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3507" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3508" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3509" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3510" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3511" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3512" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3513" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3514" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3515" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3516" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3517" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3518" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3519" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3520" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3521" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3522" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3523" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3524" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3525" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3526" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3527" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3528" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3529" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3530" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="511" parentId="500" text="Gauge 2">
+-        <components>
+-          <radiobutton id="3540" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3502" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3503" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3504" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3505" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3506" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3507" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3508" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3509" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3510" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3511" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3512" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3513" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3514" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3515" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3516" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3517" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3518" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3519" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3520" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3521" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3522" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3523" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3524" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3525" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3526" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3527" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3528" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3529" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3530" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="511" parentId="500" text="Jauge 2">
++        <components>
++          <radiobutton id="3540" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3541" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3542" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3543" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3544" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3545" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3546" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3547" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3548" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3549" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3550" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3551" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3552" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3553" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3554" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3555" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3556" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3557" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3558" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3559" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3560" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3561" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3562" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3563" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3564" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3565" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3566" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3567" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3568" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3569" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3570" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="512" parentId="500" text="Gauge 3">
+-        <components>
+-          <radiobutton id="3580" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3542" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3543" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3544" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3545" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3546" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3547" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3548" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3549" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3550" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3551" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3552" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3553" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3554" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3555" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3556" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3557" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3558" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3559" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3560" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3561" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3562" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3563" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3564" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3565" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3566" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3567" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3568" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3569" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3570" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="512" parentId="500" text="Jauge 3">
++        <components>
++          <radiobutton id="3580" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3581" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3582" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3583" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3584" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3585" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3586" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3587" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3588" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3589" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3590" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3591" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3592" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3593" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3594" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3595" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3596" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3597" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3598" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3599" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3600" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3601" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3602" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3603" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3604" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3605" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3606" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3607" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3608" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3609" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3610" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="513" parentId="500" text="Gauge 4">
+-        <components>
+-          <radiobutton id="3620" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3582" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3583" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3584" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3585" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3586" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3587" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3588" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3589" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3590" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3591" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3592" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3593" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3594" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3595" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3596" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3597" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3598" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3599" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3600" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3601" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3602" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3603" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3604" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3605" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3606" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3607" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3608" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3609" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3610" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="513" parentId="500" text="Jauge 4">
++        <components>
++          <radiobutton id="3620" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3621" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3622" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3623" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3624" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3625" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3626" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3627" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3628" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3629" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3630" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3631" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3632" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3633" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3634" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3635" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3636" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3637" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3638" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3639" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3640" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3641" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3642" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3643" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3644" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3645" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3646" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3647" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3648" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3649" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3650" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="514" parentId="500" text="Gauge 5">
+-        <components>
+-          <radiobutton id="3660" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3622" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3623" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3624" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3625" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3626" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3627" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3628" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3629" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3630" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3631" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3632" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3633" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3634" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3635" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3636" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3637" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3638" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3639" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3640" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3641" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3642" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3643" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3644" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3645" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3646" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3647" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3648" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3649" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3650" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="514" parentId="500" text="Jauge 5">
++        <components>
++          <radiobutton id="3660" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3661" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3662" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3663" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3664" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3665" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3666" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3667" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3668" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3669" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3670" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3671" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3672" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3673" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3674" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3675" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3676" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3677" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3678" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3679" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3680" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3681" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3682" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3683" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3684" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3685" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3686" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3687" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3688" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3689" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3690" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="515" parentId="500" text="Gauge 6">
+-        <components>
+-          <radiobutton id="3700" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3662" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3663" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3664" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3665" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3666" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3667" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3668" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3669" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3670" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3671" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3672" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3673" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3674" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3675" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3676" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3677" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3678" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3679" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3680" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3681" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3682" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3683" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3684" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3685" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3686" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3687" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3688" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3689" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3690" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="515" parentId="500" text="Jauge 6">
++        <components>
++          <radiobutton id="3700" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3701" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3702" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3703" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3704" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3705" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3706" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3707" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3708" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3709" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3710" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3711" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3712" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3713" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3714" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3715" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3716" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3717" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3718" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3719" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3720" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3721" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3722" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3723" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3724" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3725" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3726" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3727" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3728" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3729" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3730" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="516" parentId="500" text="Gauge 7">
+-        <components>
+-          <radiobutton id="3740" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3702" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3703" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3704" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3705" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3706" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3707" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3708" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3709" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3710" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3711" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3712" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3713" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3714" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3715" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3716" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3717" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3718" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3719" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3720" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3721" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3722" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3723" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3724" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3725" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3726" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3727" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3728" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3729" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3730" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="516" parentId="500" text="Jauge 7">
++        <components>
++          <radiobutton id="3740" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3741" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3742" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3743" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3744" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3745" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3746" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3747" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3748" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3749" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3750" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3751" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3752" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3753" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3754" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3755" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3756" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3757" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3758" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3759" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3760" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3761" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3762" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3763" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3764" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3765" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3766" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3767" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3768" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3769" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3770" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="517" parentId="500" text="Gauge 8">
+-        <components>
+-          <radiobutton id="3780" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3742" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3743" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3744" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3745" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3746" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3747" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3748" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3749" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3750" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3751" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3752" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3753" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3754" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3755" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3756" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3757" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3758" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3759" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3760" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3761" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3762" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3763" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3764" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3765" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3766" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3767" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3768" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3769" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3770" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="517" parentId="500" text="Jauge 8">
++        <components>
++          <radiobutton id="3780" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3781" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3782" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3783" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3784" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3785" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3786" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3787" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3788" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3789" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3790" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3791" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3792" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3793" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3794" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3795" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3796" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3797" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3798" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3799" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3800" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3801" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3802" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3803" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3804" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3805" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3806" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3807" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3808" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3809" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3810" action="3530" model="5330" text="Throttle target" />
+-        </components>
+-      </hmiState>
+-      <hmiState id="518" parentId="500" text="Gauge 9">
+-        <components>
+-          <radiobutton id="3820" action="3500" model="5300" text="Boost" />
++          <radiobutton id="3782" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3783" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3784" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3785" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3786" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3787" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3788" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3789" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3790" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3791" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3792" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3793" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3794" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3795" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3796" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3797" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3798" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3799" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3800" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3801" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3802" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3803" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3804" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3805" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3806" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3807" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3808" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3809" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3810" action="3530" model="5330" text="Cible papillon" />
++        </components>
++      </hmiState>
++      <hmiState id="518" parentId="500" text="Jauge 9">
++        <components>
++          <radiobutton id="3820" action="3500" model="5300" text="Turbo" />
+           <radiobutton id="3821" action="3501" model="5301" text="AFR" />
+-          <radiobutton id="3822" action="3502" model="5302" text="Timing" />
+-          <radiobutton id="3823" action="3503" model="5303" text="Intake air" />
+-          <radiobutton id="3824" action="3504" model="5304" text="Trans temp" />
+-          <radiobutton id="3825" action="3505" model="5305" text="Rail pressure" />
+-          <radiobutton id="3826" action="3506" model="5306" text="Oil pressure" />
+-          <radiobutton id="3827" action="3507" model="5307" text="Coolant" />
+-          <radiobutton id="3828" action="3508" model="5308" text="Active ethanol" />
+-          <radiobutton id="3829" action="3509" model="5309" text="Oil temp" />
+-          <radiobutton id="3830" action="3510" model="5310" text="Voltage" />
+-          <radiobutton id="3831" action="3511" model="5311" text="Engine RPM" />
+-          <radiobutton id="3832" action="3512" model="5312" text="Speed" />
+-          <radiobutton id="3833" action="3513" model="5313" text="Engine load" />
+-          <radiobutton id="3834" action="3514" model="5314" text="Manifold abs." />
+-          <radiobutton id="3835" action="3515" model="5315" text="Air flow" />
+-          <radiobutton id="3836" action="3516" model="5316" text="Throttle" />
+-          <radiobutton id="3837" action="3517" model="5317" text="Barometric" />
+-          <radiobutton id="3838" action="3518" model="5318" text="Outside air" />
+-          <radiobutton id="3839" action="3519" model="5319" text="Fuel rate" />
+-          <radiobutton id="3840" action="3520" model="5320" text="Fuel level" />
+-          <radiobutton id="3841" action="3521" model="5321" text="Accel. pedal" />
+-          <radiobutton id="3842" action="3522" model="5322" text="Spark advance" />
+-          <radiobutton id="3843" action="3523" model="5323" text="Absolute load" />
+-          <radiobutton id="3844" action="3524" model="5324" text="STFT bank 1" />
+-          <radiobutton id="3845" action="3525" model="5325" text="LTFT bank 1" />
+-          <radiobutton id="3846" action="3526" model="5326" text="STFT bank 2" />
+-          <radiobutton id="3847" action="3527" model="5327" text="LTFT bank 2" />
+-          <radiobutton id="3848" action="3528" model="5328" text="Lambda target" />
+-          <radiobutton id="3849" action="3529" model="5329" text="Catalyst temp" />
+-          <radiobutton id="3850" action="3530" model="5330" text="Throttle target" />
++          <radiobutton id="3822" action="3502" model="5302" text="Avance" />
++          <radiobutton id="3823" action="3503" model="5303" text="Air admission" />
++          <radiobutton id="3824" action="3504" model="5304" text="Temp. boîte" />
++          <radiobutton id="3825" action="3505" model="5305" text="Pression rail" />
++          <radiobutton id="3826" action="3506" model="5306" text="Pression huile" />
++          <radiobutton id="3827" action="3507" model="5307" text="Liquide refroid." />
++          <radiobutton id="3828" action="3508" model="5308" text="Taux éthanol" />
++          <radiobutton id="3829" action="3509" model="5309" text="Temp. huile" />
++          <radiobutton id="3830" action="3510" model="5310" text="Tension" />
++          <radiobutton id="3831" action="3511" model="5311" text="Régime moteur" />
++          <radiobutton id="3832" action="3512" model="5312" text="Vitesse" />
++          <radiobutton id="3833" action="3513" model="5313" text="Charge moteur" />
++          <radiobutton id="3834" action="3514" model="5314" text="Press. collecteur" />
++          <radiobutton id="3835" action="3515" model="5315" text="Débit air" />
++          <radiobutton id="3836" action="3516" model="5316" text="Papillon" />
++          <radiobutton id="3837" action="3517" model="5317" text="Press. atmos." />
++          <radiobutton id="3838" action="3518" model="5318" text="Temp. extérieure" />
++          <radiobutton id="3839" action="3519" model="5319" text="Débit carburant" />
++          <radiobutton id="3840" action="3520" model="5320" text="Niveau carburant" />
++          <radiobutton id="3841" action="3521" model="5321" text="Pédale accél." />
++          <radiobutton id="3842" action="3522" model="5322" text="Avance allumage" />
++          <radiobutton id="3843" action="3523" model="5323" text="Charge absolue" />
++          <radiobutton id="3844" action="3524" model="5324" text="Correction CT B1" />
++          <radiobutton id="3845" action="3525" model="5325" text="Correction LT B1" />
++          <radiobutton id="3846" action="3526" model="5326" text="Correction CT B2" />
++          <radiobutton id="3847" action="3527" model="5327" text="Correction LT B2" />
++          <radiobutton id="3848" action="3528" model="5328" text="Cible lambda" />
++          <radiobutton id="3849" action="3529" model="5329" text="Temp. catalyseur" />
++          <radiobutton id="3850" action="3530" model="5330" text="Cible papillon" />
+         </components>
+       </hmiState>
+     </hmiStates>
+--- a/source/native/src/plugins/boost_deck.cpp
++++ b/source/native/src/plugins/boost_deck.cpp
+@@ -49,17 +49,17 @@
+ const unsigned kCircularSteps = 12;
+ const unsigned kAlertSignals[] = {BD_COOLANT, BD_OIL_TEMP, BD_OIL};
+ const char* const kSettingLabels[] = {
+-    "Pressure", "Speed", "Temperature", "Gauge style", "Alert mode",
+-    "Coolant high", "Oil temp high", "Oil pressure low"
++    "Pression", "Vitesse", "Température", "Style des jauges", "Mode d’alerte",
++    "Liquide trop chaud", "Huile trop chaude", "Pression huile basse"
+ };
+ 
+ void settingValue(const BoostPreferences& prefs, unsigned row, unsigned choice, char* text, size_t size) {
+     static const char* const values[][3]={
+         {"psi","bar","kPa"}, {"mph","km/h",0}, {"\260F","\260C",0},
+-        {"Bars","Circular dials",0}, {"Screen + soft chime","Screen only",0},
++        {"Barres","Cadrans ronds",0}, {"Écran et son discret","Écran seul",0},
+     };
+     if (row<BOOST_COOLANT_ALERT) snprintf(text,size,"%s",values[row][choice]);
+-    else if (!choice) snprintf(text,size,"Off");
++    else if (!choice) snprintf(text,size,"Désactivé");
+     else {
+         const unsigned alarm=row-BOOST_COOLANT_ALERT, signal=kAlertSignals[alarm];
+         const unsigned units=prefs.units(signal);
+@@ -122,7 +122,7 @@
+         if (changed.save(kPreferences)) {
+             preferences_=changed;
+             updateModel(118u,bmw::BasicString<char>(""));
+-        } else updateModel(118u,bmw::BasicString<char>("Could not save settings"));
++        } else updateModel(118u,bmw::BasicString<char>("Échec de sauvegarde des réglages"));
+         updateSettings();
+         refresh();
+         return true;
+@@ -132,7 +132,7 @@
+         BoostPreferences changed=preferences_;
+         changed.choice[Row]=Choice;
+         if (!changed.save(kPreferences)) {
+-            updateModel(118u,bmw::BasicString<char>("Could not save settings"));
++            updateModel(118u,bmw::BasicString<char>("Échec de sauvegarde des réglages"));
+             return true;
+         }
+         preferences_=changed;
+@@ -165,7 +165,7 @@
+             if (saveAssignments()) assignmentsChanged();
+             else {
+                 selected=before;
+-                updateModel(340u+editing_,bmw::BasicString<char>("Could not save gauge selection"));
++                updateModel(340u+editing_,bmw::BasicString<char>("Échec de sauvegarde de la jauge"));
+             }
+         }
+         return true;
+@@ -176,7 +176,7 @@
+             if (saveAssignments()) assignmentsChanged();
+             else {
+                 diesel_=!Diesel;
+-                updateModel(360u,bmw::BasicString<char>("Could not save engine profile"));
++                updateModel(360u,bmw::BasicString<char>("Échec de sauvegarde du profil moteur"));
+             }
+         }
+         return true;
+@@ -341,7 +341,8 @@
+ 
+ void BoostDeck::updateSettings() {
+     char label[80];
+-    snprintf(label,sizeof label,"Gauge color: %s",kColorNames[preferences_.color]);
++    static const char* const colorsFr[] = {"Orange BMW", "Bleu", "Vert", "Blanc", "Violet", "Rose", "Cyan", "Rouge", "Multicolore"};
++    snprintf(label,sizeof label,"Couleur des jauges : %s",colorsFr[preferences_.color]);
+     updateModel(110u,bmw::BasicString<char>(label));
+     for (unsigned color=0;color<sizeof kColorNames / sizeof kColorNames[0];++color)
+         updateModel(5200u+color,preferences_.color==color);
+@@ -389,7 +390,7 @@
+         chime=chime || entered;
+     }
+     if (mask!=alert_mask_) {
+-        static const char* const text[]={"Coolant hot", "Oil temp high", "Oil pressure low"};
++        static const char* const text[]={"Liquide trop chaud", "Huile trop chaude", "Pression huile basse"};
+         static const unsigned priority[]={2,0,1};
+         char banner[96]="";
+         for (unsigned i=0;i<3;++i) {
+@@ -479,13 +480,13 @@
+ void BoostDeck::updateAssignments() {
+     for (unsigned i=0;i<kBarCount;++i) {
+         char name[64];
+-        snprintf(name,sizeof name,"Gauge %u: %s",i+1,bd_name(signals_[diesel_][i]));
++        snprintf(name,sizeof name,"Jauge %u : %s",i+1,bd_name(signals_[diesel_][i]));
+         updateModel(340u+i,bmw::BasicString<char>(name));
+         const unsigned signal=signals_[diesel_][i];
+         const char* caption=kGaugeCaptions[signal][i==kVerticalSlot];
+         updateModel(370u+i,bmw::BasicString<char>(caption));
+     }
+-    updateModel(360u,bmw::BasicString<char>(diesel_ ? "Engine profile: Diesel" : "Engine profile: Gasoline"));
++    updateModel(360u,bmw::BasicString<char>(diesel_ ? "Profil moteur : Diesel" : "Profil moteur : Essence"));
+     updateModel(5210u,!diesel_);
+     updateModel(5211u,diesel_);
+     refresh();
+--- a/source/native/src/common/boost_signals.def
++++ b/source/native/src/common/boost_signals.def
+@@ -1,33 +1,33 @@
+ // Keep this order stable. The IDs are stored in BoostDeck settings.
+ // The final two fields are the main tile and narrow tile captions.
+-SIGNAL(BOOST, "Boost", 0, 35, PRESSURE_PSI, "Boost", "Boost")
++SIGNAL(BOOST, "Turbo", 0, 35, PRESSURE_PSI, "Turbo", "Turbo")
+ SIGNAL(AFR, "AFR", 9, 19, NUMBER, "AFR", "AFR")
+-SIGNAL(TIMING, "Timing", -20, 50, DEGREES, "Timing", "Ign")
+-SIGNAL(IAT, "Intake air", -20, 100, TEMPERATURE, "Intake air", "IAT")
+-SIGNAL(TRANS, "Trans temp", 0, 150, TEMPERATURE, "Trans temp", "ATF")
+-SIGNAL(RAIL, "Rail pressure", 0, 250, PRESSURE_BAR, "Rail press.", "Rail")
+-SIGNAL(OIL, "Oil pressure", 0, 8, PRESSURE_BAR, "Oil press.", "Oil P")
+-SIGNAL(COOLANT, "Coolant", 0, 130, TEMPERATURE, "Coolant", "Cool")
+-SIGNAL(ETHANOL, "Active ethanol", 0, 100, PERCENT, "E%", "E%")
+-SIGNAL(OIL_TEMP, "Oil temp", 40, 150, TEMPERATURE, "Oil temp", "Oil T")
+-SIGNAL(BATTERY, "Voltage", 11, 15.5, VOLTS, "Voltage", "Volt")
+-SIGNAL(RPM, "Engine RPM", 0, 8000, RPM, "RPM", "RPM")
+-SIGNAL(SPEED, "Speed", 0, 250, SPEED, "Speed", "Spd")
+-SIGNAL(LOAD, "Engine load", 0, 100, PERCENT, "Eng. load", "Load")
+-SIGNAL(MAP, "Manifold abs.", 0, 255, PRESSURE_KPA, "Manifold", "MAP")
+-SIGNAL(MAF, "Air flow", 0, 300, MASS_FLOW, "Air flow", "MAF")
+-SIGNAL(THROTTLE, "Throttle", 0, 100, PERCENT, "Throttle", "TPS")
+-SIGNAL(BARO, "Barometric", 60, 115, PRESSURE_KPA, "Baro", "Baro")
+-SIGNAL(AMBIENT, "Outside air", -20, 50, TEMPERATURE, "Outside", "Amb")
+-SIGNAL(FUEL_RATE, "Fuel rate", 0, 100, FUEL_FLOW, "Fuel rate", "Rate")
+-SIGNAL(FUEL_LEVEL, "Fuel level", 0, 100, PERCENT, "Fuel level", "Fuel")
+-SIGNAL(ACCELERATOR, "Accel. pedal", 0, 100, PERCENT, "Pedal", "APP")
+-SIGNAL(SPARK_ADVANCE, "Spark advance", -20, 50, DEGREES, "Spark adv.", "Adv")
+-SIGNAL(ABS_LOAD, "Absolute load", 0, 250, PERCENT, "Abs. load", "Abs")
+-SIGNAL(STFT_B1, "STFT bank 1", -25, 25, PERCENT, "STFT B1", "ST1")
+-SIGNAL(LTFT_B1, "LTFT bank 1", -25, 25, PERCENT, "LTFT B1", "LT1")
+-SIGNAL(STFT_B2, "STFT bank 2", -25, 25, PERCENT, "STFT B2", "ST2")
+-SIGNAL(LTFT_B2, "LTFT bank 2", -25, 25, PERCENT, "LTFT B2", "LT2")
+-SIGNAL(LAMBDA_TARGET, "Lambda target", .7, 1.3, NUMBER, "Lambda", "Lam")
+-SIGNAL(CAT_TEMP, "Catalyst temp", 0, 1100, TEMPERATURE, "Cat temp", "Cat")
+-SIGNAL(THROTTLE_TARGET, "Throttle target", 0, 100, PERCENT, "Target TPS", "TGT")
++SIGNAL(TIMING, "Avance", -20, 50, DEGREES, "Avance", "Av.")
++SIGNAL(IAT, "Air admission", -20, 100, TEMPERATURE, "Air admission", "Adm.")
++SIGNAL(TRANS, "Temp. boîte", 0, 150, TEMPERATURE, "Temp. boîte", "ATF")
++SIGNAL(RAIL, "Pression rail", 0, 250, PRESSURE_BAR, "Press. rail", "Rail")
++SIGNAL(OIL, "Pression huile", 0, 8, PRESSURE_BAR, "Press. huile", "P. huile")
++SIGNAL(COOLANT, "Liquide refroid.", 0, 130, TEMPERATURE, "Liquide refroid.", "LDR")
++SIGNAL(ETHANOL, "Taux éthanol", 0, 100, PERCENT, "E%", "E%")
++SIGNAL(OIL_TEMP, "Temp. huile", 40, 150, TEMPERATURE, "Temp. huile", "T. huile")
++SIGNAL(BATTERY, "Tension", 11, 15.5, VOLTS, "Tension", "Volt")
++SIGNAL(RPM, "Régime moteur", 0, 8000, RPM, "tr/min", "tr/min")
++SIGNAL(SPEED, "Vitesse", 0, 250, SPEED, "Vitesse", "Vit.")
++SIGNAL(LOAD, "Charge moteur", 0, 100, PERCENT, "Charge mot.", "Ch.")
++SIGNAL(MAP, "Press. collecteur", 0, 255, PRESSURE_KPA, "Collecteur", "MAP")
++SIGNAL(MAF, "Débit air", 0, 300, MASS_FLOW, "Débit air", "MAF")
++SIGNAL(THROTTLE, "Papillon", 0, 100, PERCENT, "Papillon", "TPS")
++SIGNAL(BARO, "Press. atmos.", 60, 115, PRESSURE_KPA, "Baro", "Baro")
++SIGNAL(AMBIENT, "Temp. extérieure", -20, 50, TEMPERATURE, "Temp. ext.", "Ext.")
++SIGNAL(FUEL_RATE, "Débit carburant", 0, 100, FUEL_FLOW, "Débit carburant", "Débit")
++SIGNAL(FUEL_LEVEL, "Niveau carburant", 0, 100, PERCENT, "Niveau carburant", "Carb.")
++SIGNAL(ACCELERATOR, "Pédale accél.", 0, 100, PERCENT, "Pédale", "APP")
++SIGNAL(SPARK_ADVANCE, "Avance allumage", -20, 50, DEGREES, "Avance all.", "Av.")
++SIGNAL(ABS_LOAD, "Charge absolue", 0, 250, PERCENT, "Charge abs.", "Abs.")
++SIGNAL(STFT_B1, "Correction CT B1", -25, 25, PERCENT, "CT B1", "CT1")
++SIGNAL(LTFT_B1, "Correction LT B1", -25, 25, PERCENT, "LT B1", "LT1")
++SIGNAL(STFT_B2, "Correction CT B2", -25, 25, PERCENT, "CT B2", "CT2")
++SIGNAL(LTFT_B2, "Correction LT B2", -25, 25, PERCENT, "LT B2", "LT2")
++SIGNAL(LAMBDA_TARGET, "Cible lambda", .7, 1.3, NUMBER, "Lambda", "Lam.")
++SIGNAL(CAT_TEMP, "Temp. catalyseur", 0, 1100, TEMPERATURE, "Temp. cata", "Cata")
++SIGNAL(THROTTLE_TARGET, "Cible papillon", 0, 100, PERCENT, "Cible pap.", "Cible")
